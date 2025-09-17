@@ -1,0 +1,71 @@
+<section id="details" class="py-20 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+
+    <!-- Pré-titre -->
+    <span class="text-green-500 font-semibold uppercase tracking-wide text-sm italic">Détails du service</span>
+
+    <!-- Titre principal -->
+    <h1 class="mt-2 text-4xl font-bold text-gray-900 mb-6">{{ service?.title }}</h1>
+
+    <!-- Description principale -->
+    <p class="text-gray-700 mb-8 leading-relaxed">
+      {{ service?.longDesc }}
+    </p>
+
+    <!-- Image illustrative -->
+    <div class="mb-8">
+      <img [src]="service?.image" 
+           alt="{{ service?.title }}" 
+           class="rounded-2xl shadow-lg w-full h-auto object-cover"
+           loading="lazy">
+    </div>
+
+    <!-- Sous-section Avantages -->
+    <div class="bg-white p-8 rounded-2xl shadow-md mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">Pourquoi choisir ce service ?</h2>
+      <ul class="list-disc pl-5 space-y-2 text-gray-700">
+        <li *ngIf="service?.id === '1'">Suivi médical complet et personnalisé pour toute la famille.</li>
+        <li *ngIf="service?.id === '1'">Conseils de prévention et dépistages réguliers.</li>
+        <li *ngIf="service?.id === '2'">Programmes de rééducation adaptés aux besoins spécifiques.</li>
+        <li *ngIf="service?.id === '2'">Prévention et amélioration de la mobilité quotidienne.</li>
+        <li *ngIf="service?.id === '3'">Vaccinations sûres et conformes aux protocoles récents.</li>
+        <li *ngIf="service?.id === '3'">Suivi personnalisé et conseils sur la prévention des maladies.</li>
+      </ul>
+    </div>
+
+    <!-- Points clés ou bénéfices -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="bg-green-100 p-6 rounded-xl shadow">
+        <h3 class="text-lg font-semibold mb-2 text-green-800">Approche humaine</h3>
+        <p class="text-green-900 text-sm">
+          Chaque patient bénéficie d’une attention particulière et d’un suivi personnalisé.
+        </p>
+      </div>
+      <div class="bg-green-100 p-6 rounded-xl shadow">
+        <h3 class="text-lg font-semibold mb-2 text-green-800">Expertise professionnelle</h3>
+        <p class="text-green-900 text-sm">
+          Nos professionnels de santé combinent expérience et passion pour le bien-être de nos patients.
+        </p>
+      </div>
+      <div class="bg-green-100 p-6 rounded-xl shadow">
+        <h3 class="text-lg font-semibold mb-2 text-green-800">Équipements modernes</h3>
+        <p class="text-green-900 text-sm">
+          Des installations modernes pour des soins efficaces, sûrs et confortables.
+        </p>
+      </div>
+      <div class="bg-green-100 p-6 rounded-xl shadow">
+        <h3 class="text-lg font-semibold mb-2 text-green-800">Suivi continu</h3>
+        <p class="text-green-900 text-sm">
+          Un accompagnement de chaque patient, même après la consultation ou la séance.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bouton retour -->
+    <a href="/#services"
+       class="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-full font-semibold hover:bg-green-700 transition shadow-md hover:shadow-lg">
+       ← Retour aux services
+    </a>
+
+  </div>
+</section>

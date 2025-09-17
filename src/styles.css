@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.cross {
+  position: absolute;
+  font-size: 50px; /* taille initiale, ajustée par JS */
+  color: rgba(16, 185, 129, 0.6); /* opacité initiale, ajustée par JS */
+  pointer-events: none;
+  user-select: none;
+}
+
+
+@theme {
+  --font-sans: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-heading: Figtree, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+

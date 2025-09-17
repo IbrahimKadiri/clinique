@@ -1,0 +1,35 @@
+<section id="team" class="bg-gray-50 py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+
+    <!-- Pré-titre -->
+    <span class="text-green-600 font-semibold uppercase tracking-wide">Notre force</span>
+
+    <!-- Titre -->
+    <h2 class="mt-2 mb-6 text-4xl font-bold text-gray-900">Une équipe de confiance</h2>
+
+    <!-- Intro -->
+    <p class="text-gray-600 max-w-2xl mx-auto mb-16">
+      Des professionnels engagés, passionnés et à l’écoute, unis par la volonté 
+      d’offrir des soins accessibles et humains à chaque patient.
+    </p>
+
+    <!-- Grille avec grandes photos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div *ngFor="let member of team" 
+           class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl">
+        
+        <!-- Photo portrait -->
+        <img [src]="member.photo" [alt]="member.name" 
+             class="w-full h-auto object-cover"
+             loading="lazy">
+        
+        <!-- Infos -->
+        <div class="p-6 text-left">
+          <h3 class="text-lg font-semibold text-gray-900">{{member.name}}</h3>
+          <p class="text-green-600 font-medium mb-3">{{member.role}}</p>
+          <p class="text-gray-600 text-sm">{{member.shortDesc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
