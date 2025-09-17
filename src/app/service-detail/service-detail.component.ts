@@ -28,6 +28,7 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     animateSection(this.el.nativeElement.querySelector("#details"))
   }
 }

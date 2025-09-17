@@ -28,8 +28,6 @@ export class ServicesComponent implements OnInit, AfterViewInit {
 
   goToDetails(id: string) {
     this._router.navigate(['services', id]); 
-    // Scroll vers le top du viewport
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 }

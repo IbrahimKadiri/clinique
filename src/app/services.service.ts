@@ -10,8 +10,8 @@ export class ServicesService {
    private services = [
   {
     id: '1',
-    icon: '/assets/images/doctor-logo.svg',
-    image: '/assets/images/infirmier.jpg',
+    icon: 'assets/images/doctor-logo.svg',
+    image: 'assets/images/infirmier.jpg',
     title: 'Médecin Généraliste',
     shortDesc: 'Consultations régulières et suivi complet pour toute la famille.',
     longDesc: `Notre médecin généraliste assure un suivi médical régulier et complet, 
@@ -21,8 +21,8 @@ export class ServicesService {
   },
   {
     id: '2',
-    icon: '/assets/images/dumbell-logo.svg',
-    image: '/assets/images/kine.jpg',
+    icon: 'assets/images/dumbell-logo.svg',
+    image: 'assets/images/kine.jpg',
     title: 'Kinésithérapie',
     shortDesc: 'Rééducation, prévention et accompagnement personnalisé.',
     longDesc: `Nos kinésithérapeutes expérimentés proposent des séances de rééducation ciblées, 
@@ -32,8 +32,8 @@ export class ServicesService {
   },
   {
     id: '3',
-    icon: '/assets/images/vaccin-logo.svg',
-    image: '/assets/images/vaccin.jpg',
+    icon: 'assets/images/vaccin-logo.svg',
+    image: 'assets/images/vaccin.jpg',
     title: 'Vaccinations',
     shortDesc: 'Programmes de prévention complets pour tous les âges.',
     longDesc: `Nous proposons des programmes de vaccination complets, adaptés aux enfants, adultes et personnes à risque. 
