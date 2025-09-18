@@ -4,6 +4,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
+ * Helper pour adapter le déclenchement selon la taille d'écran
+ */
+function responsiveStart(defaultStart: string, mobileStart = "top 95%") {
+  return window.innerWidth < 768 ? mobileStart : defaultStart;
+}
+
+/**
  * Animation générique pour une section (texte + images)
  */
 export function animateSection(element: HTMLElement) {
@@ -17,14 +24,14 @@ export function animateSection(element: HTMLElement) {
     ease: "power3.out",
     scrollTrigger: {
       trigger: element,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    }
+      start: responsiveStart("top 80%"),
+      toggleActions: "play none none none",
+    },
   });
 }
 
 /**
- * Animation spécifique pour le Hero (entrée plus douce et immersive)
+ * Animation spécifique pour le Hero
  */
 export function animateHero(element: HTMLElement) {
   const text = element.querySelectorAll("h1, p, span, a");
@@ -52,61 +59,65 @@ export function animateCards(element: HTMLElement) {
     ease: "power3.out",
     scrollTrigger: {
       trigger: element,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    }
+      start: responsiveStart("top 80%"),
+      toggleActions: "play none none none",
+    },
   });
 }
 
+/**
+ * Animation About
+ */
 export function animateAbout(section: HTMLElement) {
   const header = section.querySelectorAll("span, h2, p");
   const image = section.querySelector("img");
 
-  // Animation en-tête
   gsap.from(header, {
     scrollTrigger: {
       trigger: section,
-      start: "top 85%",
+      start: responsiveStart("top 85%"),
     },
     y: 50,
     opacity: 0,
     duration: 1.5,
     stagger: 0.5,
-    ease: "power4.out"
+    ease: "power4.out",
   });
 
-  // Image à droite
-if (image) {
-  gsap.from(image, {
-    scrollTrigger: {
-      trigger: section,
-      start: "top 75%",
-    },
-    x: 60,           // déplacement plus léger
-    opacity: 0,
-    scale: 1.05,     // zoom-in subtil
-    duration: 4,     // plus lent
-    ease: "expo.out",
-    delay: 1       // arrive après le texte
-  });
-}
+  if (image) {
+    gsap.from(image, {
+      scrollTrigger: {
+        trigger: section,
+        start: responsiveStart("top 75%"),
+      },
+      x: 60,
+      opacity: 0,
+      scale: 1.05,
+      duration: 4,
+      ease: "expo.out",
+      delay: 1,
+    });
+  }
 }
 
+/**
+ * Animation Services
+ */
 export function animateServices(section: HTMLElement) {
   if (!section) return;
 
-  // En-tête (sur-titre + titre + description)
+  // En-tête
   const headerElements = section.querySelectorAll("span, h2, p");
   gsap.from(headerElements, {
     scrollTrigger: {
       trigger: section,
-      start: "top 80%",
+      start: responsiveStart("top 80%"),
     },
     opacity: 0,
     y: 40,
-    duration: 1.5,          // plus long pour plus de smooth
-    stagger: 0.3,           // écart plus doux entre chaque élément
-    ease: "power2.out",     // easing plus doux
+    duration: 1.5,
+    stagger: 0.8,
+    ease: "power2.out",
   });
 
   // Cards
@@ -114,14 +125,14 @@ export function animateServices(section: HTMLElement) {
   gsap.from(cards, {
     scrollTrigger: {
       trigger: section,
-      start: "top 75%",
+      start: responsiveStart("top 75%"),
     },
     opacity: 0,
     y: 50,
     scale: 0.9,
-    duration: 1.2,          // allongé
-    stagger: 0.7,           // plus doux
-    ease: "back.out(1.2)",   // easing plus subtil
+    duration: 1.2,
+    stagger: 0.7,
+    ease: "back.out(1.2)",
   });
 
   // Icônes
@@ -129,7 +140,7 @@ export function animateServices(section: HTMLElement) {
   gsap.from(icons, {
     scrollTrigger: {
       trigger: section,
-      start: "top 75%",
+      start: responsiveStart("top 75%"),
     },
     scale: 0,
     opacity: 0,
@@ -138,25 +149,29 @@ export function animateServices(section: HTMLElement) {
     ease: "back.out(1.5)",
   });
 
+  // Effet hover zoom
   cards.forEach((card) => {
-  card.addEventListener("mouseenter", () => {
-    gsap.to(card, { scale: 1.05, duration: 0.3 });
+    card.addEventListener("mouseenter", () => {
+      gsap.to(card, { scale: 1.05, duration: 0.3 });
+    });
+    card.addEventListener("mouseleave", () => {
+      gsap.to(card, { scale: 1, duration: 0.3 });
+    });
   });
-  card.addEventListener("mouseleave", () => {
-    gsap.to(card, { scale: 1, duration: 0.3 });
-  });
-});
 }
 
+/**
+ * Animation Contact
+ */
 export function animateContact(section: HTMLElement) {
   if (!section) return;
 
-  // Texte d’intro (pré-titre + titre + description)
+  // Texte
   const textElements = section.querySelectorAll("span, h2, p");
   gsap.from(textElements, {
     scrollTrigger: {
       trigger: section,
-      start: "top 80%", // déclenchement quand section est visible
+      start: responsiveStart("top 80%"),
     },
     opacity: 0,
     y: 40,
@@ -167,23 +182,25 @@ export function animateContact(section: HTMLElement) {
 
   // Formulaire
   const form = section.querySelector("form");
-  gsap.from(form, {
-    scrollTrigger: {
-      trigger: form,
-      start: "top 85%",
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1.2,
-    ease: "power2.out",
-  });
+  if (form) {
+    gsap.from(form, {
+      scrollTrigger: {
+        trigger: form,
+        start: responsiveStart("top 85%"),
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1.2,
+      ease: "power2.out",
+    });
+  }
 
   // Map et horaires
   const mapAndHours = section.querySelectorAll(".space-y-6 > div");
   gsap.from(mapAndHours, {
     scrollTrigger: {
       trigger: section,
-      start: "top 85%",
+      start: responsiveStart("top 85%"),
     },
     opacity: 0,
     y: 50,
@@ -193,12 +210,14 @@ export function animateContact(section: HTMLElement) {
   });
 }
 
+/**
+ * Animation Team
+ */
 export function animateTeam() {
-  // Animation du titre et texte d’intro
   gsap.from("#team span, #team h2, #team p", {
     scrollTrigger: {
       trigger: "#team",
-      start: "top 80%", // déclenchement quand la section arrive dans le viewport
+      start: responsiveStart("top 80%"),
     },
     opacity: 0,
     y: 40,
@@ -207,29 +226,28 @@ export function animateTeam() {
     stagger: 0.5,
   });
 
-   // Animation des cards
   const cards = document.querySelectorAll("#team .grid > div");
-  // Animation des cards
+
   gsap.from(cards, {
     scrollTrigger: {
       trigger: "#team .grid",
-      start: "top 85%",
+      start: responsiveStart("top 85%"),
     },
     opacity: 0,
     y: 60,
     scale: 0.95,
     duration: 1.5,
     ease: "power3.out",
-    stagger: 0.5, // cards arrivent une par une
+    stagger: 0.5,
   });
 
-   cards.forEach(card => {
+  // Effet hover zoom
+  cards.forEach((card) => {
     card.addEventListener("mouseenter", () => {
       gsap.to(card, { scale: 1.05, duration: 0.3, ease: "power1.out" });
     });
     card.addEventListener("mouseleave", () => {
       gsap.to(card, { scale: 1, duration: 0.3, ease: "power1.out" });
     });
-
   });
 }
